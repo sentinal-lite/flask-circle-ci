@@ -95,6 +95,8 @@ workflows:
                 - dev
                 - staging
                 - main
+          requires:
+            - printenv
       - test:
           filters:
             branches:
