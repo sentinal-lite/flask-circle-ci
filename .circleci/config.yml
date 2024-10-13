@@ -36,7 +36,7 @@ jobs:
           command: echo "Linting done"
   test:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.12
     steps:
       - checkout
       - run:
@@ -51,9 +51,20 @@ jobs:
           name: Test Done
           command: echo "Test done."
 
+  slack-notification:
+    docker:
+      - image: circleci/python:3.12
+    steps:
+      - run:
+          name: slack-notification
+          command: echo "Sending to slack"
+      - run:
+          name: slack-notification done
+          command: echo "Notification done"
+
   pr-comment-fail:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.12
     steps:
       - run:
           name: Add Comment to PR
@@ -90,6 +101,4 @@ workflows:
                 - dev
                 - staging
                 - main
-          requires:
-            - lint-test
-            - test
+
