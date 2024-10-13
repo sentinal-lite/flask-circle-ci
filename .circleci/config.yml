@@ -1,6 +1,5 @@
 version: 2.1
 
-
 orbs:
   python: circleci/python@2.1.1
 
@@ -70,18 +69,18 @@ workflows:
       - printenv
       - lint-test:
           filters:
-            branches: 
+            branches:
               only:
                 - dev
                 - staging
-                - master
+                - main
       - test:
           filters:
             branches:
               only:
                 - dev
                 - staging
-                - master
+                - main
           requires:
             - lint-test
       - pr-comment-fail:
@@ -90,7 +89,7 @@ workflows:
               only:
                 - dev
                 - staging
-                - master
+                - main
           requires:
             - lint-test
             - test
