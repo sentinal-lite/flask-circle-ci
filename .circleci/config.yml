@@ -87,6 +87,7 @@ jobs:
 workflows:
   pr-workflow:
     jobs:
+      - printenv
       - lint-test:
           filters:
             branches:
